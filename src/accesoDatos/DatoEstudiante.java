@@ -84,7 +84,7 @@ public class DatoEstudiante {
         tempE.setCodigo(cod);
         for(int i = 0; i<listE.size();i++){
             Estudiante e=listE.get(i);
-            if(e.equals(e)){
+            if(e.equals(tempE)){
                 index = i;
             }
         }

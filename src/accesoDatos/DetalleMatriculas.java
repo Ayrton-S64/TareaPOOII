@@ -33,12 +33,13 @@ public class DetalleMatriculas {
     }
     
     public static String escribirMatricula(Matricula matricula){
+        int n = 0;
         String mensaje = "";
         try {
             crearArchivo();
             flujo.close();
-            mensaje = setMatricula(numRegistros, matricula);
-            if(mensaje.compareTo("ok")==0){
+            n = setMatricula(numRegistros, matricula);
+            if(n==matricula.getCursosMatriculados().size()){
                 numRegistros++;
             }
         } catch (IOException ex) {
@@ -47,33 +48,35 @@ public class DetalleMatriculas {
             return mensaje;
         }
     }
-    
-    public static String setMatricula(int pos, Matricula matricula){
-        String mensaje = "";
+    public static int setMatricula(int pos, Matricula matricula){
+        int n= 1;
         try {
             if (matricula.getSize() + 4 > TAMREG) {
-                mensaje = "Tamaño de registro insuficiente";
+                
             } else {
                 crearArchivo();
-                flujo.seek(pos * TAMREG);
-                flujo.writeUTF(matricula.genCode());
                 ArrayList<Asignatura> lista = matricula.getCursosMatriculados();
                 for(int i =0 ; i < lista.size();i++){
+                    flujo.seek(pos * TAMREG);
+                    flujo.writeUTF(matricula.genCode());
                     flujo.writeUTF(lista.get(i).getCodigo());
                     flujo.writeInt(DetalleMatriculas.countAsignatura(matricula.genCode(), lista.get(i).getCodigo()));
                     flujo.writeFloat(matricula.getCalificaciones().get(i));
+                    pos++;
+                    n++;
                 }
             }
         } catch (IOException ex) {
-            mensaje = "Excepción: " + ex.getMessage();
+            System.out.println("Excepción: " + ex.getMessage());
+            n=0;
         } finally {
             try {
                 flujo.close();
             } catch (IOException ex) {
-                mensaje = "El flujo ya estaba cerrado: " + ex.getMessage();
+                System.out.println("El flujo ya estaba cerrado: " + ex.getMessage());
             }
         }
-        return mensaje;
+        return n;
     }
     
     public static int countAsignatura(String codMatricula, String codAsignatura){

@@ -52,7 +52,7 @@ public class DatoAsignatura {
         String mensaje = "";
         try {
             if (asignatura.getSize() + 4 > TAMREG) {
-                mensaje = "Tamaño de registro insuficiente";
+                mensaje = "Tamaño de registro excedido";
             } else {
                 crearArchivo();
                 flujo.seek(posicion * TAMREG);
@@ -80,8 +80,8 @@ public class DatoAsignatura {
         Asignatura tempA = new Asignatura();
         tempA.setCodigo(cod);
         for(int i = 0; i<listA.size();i++){
-            Asignatura e=listA.get(i);
-            if(e.equals(e)){
+            Asignatura a=listA.get(i);
+            if(a.equals(tempA)){
                 index = i;
             }
         }

@@ -14,6 +14,7 @@ import entidades.Matricula;
 import entidades.PeriodoAcademico;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import javax.swing.*;
 
 /**
  *
@@ -21,9 +22,9 @@ import java.util.GregorianCalendar;
  */
 public class Presentacion extends javax.swing.JFrame {
 
-    static ArrayList<Estudiante> estudiantes = DatoEstudiante.getContenido();
-    static ArrayList<Asignatura> asignaturas = DatoAsignatura.getContenido();
-    static ArrayList<Matricula> matriculas = DatoMatricula.getContenido();
+    static ArrayList<Estudiante> estudiantes; 
+    static ArrayList<Asignatura> asignaturas;
+    static ArrayList<Matricula> matriculas;
     static PeriodoAcademico periodo = new PeriodoAcademico(2020, "I");
     static GregorianCalendar c = new GregorianCalendar();
 
@@ -32,6 +33,9 @@ public class Presentacion extends javax.swing.JFrame {
      */
     public Presentacion() {
         initComponents();
+        estudiantes = DatoEstudiante.getContenido();
+        asignaturas = DatoAsignatura.getContenido();
+        matriculas = DatoMatricula.getContenido();
     }
 
     /**
@@ -323,6 +327,11 @@ public class Presentacion extends javax.swing.JFrame {
         });
 
         cboCicloM.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboCicloM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboCicloMActionPerformed(evt);
+            }
+        });
 
         lblCodigoM.setText("############");
         lblCodigoM.setEnabled(false);
@@ -491,29 +500,40 @@ public class Presentacion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarAActionPerformed
 
     private void btnRegistrarEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEActionPerformed
-        // TODO add your handling code here:
+        registrarEstudiante();
+        
     }//GEN-LAST:event_btnRegistrarEActionPerformed
 
     private void btnRegistrarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarMActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegistrarMActionPerformed
+
+    private void cboCicloMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCicloMActionPerformed
+        // TODO add your handling code here:
+        JComboBox that = cboCicloM;
+        for(int i = 0; i<that.getItemCount();i++){
+            System.out.println(that.getItemAt(i));
+        }
+        
+    }//GEN-LAST:event_cboCicloMActionPerformed
     public void resgistrarAsignatura() {
         String codigo = txtCodigoA.getText();
         String nombreA = txtNombreA.getText();
         int ciclo = Integer.parseInt(cboCiclo.getSelectedItem().toString());
         int numeroCreditos = Integer.parseInt(cboCreditos.getSelectedItem().toString());
         Asignatura asignatura = new Asignatura(codigo, nombreA, ciclo, numeroCreditos);
-        DatoAsignatura.escribirAsignatura(asignatura);
+        //DatoAsignatura.escribirAsignatura(asignatura);
         asignaturas.add(asignatura);
     }
+    
     public void registrarEstudiante(){
         String nombre = txtNombreE.getText();
         String apellidos= txtApellidosE.getText();
-        String Dni = txtDni.getText();
+        String dni = txtDni.getText();
         String codigo = txtCodigoE.getText();
         String direccion  = txtDireccion.getText();
-        Estudiante estudiante = new Estudiante(nombre,apellidos,Dni,codigo,direccion);
-        DatoEstudiante.escribirEstudiante(estudiante);
+        Estudiante estudiante = new Estudiante(nombre,apellidos,dni,codigo,direccion);
+        //DatoEstudiante.escribirEstudiante(estudiante);
         estudiantes.add(estudiante);      
     }
     public void añadir(){
@@ -528,13 +548,14 @@ public class Presentacion extends javax.swing.JFrame {
         m.setFecha(c);
         m.setPeriodo(periodo); 
         String codigo=lblCodigoM.getText();   
-       Estudiante estudiante = new Estudiante();
+       Estudiante estudiante;
        //Buscar el estudiante segun el codigo del label
        
+       estudiante = estudiantes.get(DatoEstudiante.indexOf(txtCodigoEM.getText()));
        
         m.setEstudiante(estudiante);
         
-        String ciclo = cboCiclo.getSelectedItem().toString(); 
+        
         ///Buscar la asignaturas segun el ciclo y luego agregar las asignaturas al cboAsignatura  
         ///Agregar a la tabla
         /// m.setCursosmatriculados(cursosMatrilados)
