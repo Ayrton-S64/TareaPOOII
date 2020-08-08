@@ -15,6 +15,7 @@ import entidades.PeriodoAcademico;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import javax.swing.*;
+import javax.swing.table.*;
 
 /**
  *
@@ -81,7 +82,7 @@ public class Presentacion extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         txtCodigoEM = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        BtnBuscarEstudiante = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -94,8 +95,8 @@ public class Presentacion extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         txtDniEM = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton6 = new javax.swing.JButton();
+        tblCursosM = new javax.swing.JTable();
+        BtnAddCursoM = new javax.swing.JButton();
         btnRegistrarM = new javax.swing.JButton();
         cboCicloM = new javax.swing.JComboBox();
         lblCodigoM = new javax.swing.JLabel();
@@ -109,10 +110,25 @@ public class Presentacion extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("Asignatura");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Estudiante");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Matricula");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel17.setText("Registrar");
 
@@ -130,7 +146,7 @@ public class Presentacion extends javax.swing.JFrame {
                         .addComponent(jButton2)
                         .addGap(18, 18, 18)
                         .addComponent(jButton3)))
-                .addContainerGap(614, Short.MAX_VALUE))
+                .addContainerGap(664, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,7 +158,7 @@ public class Presentacion extends javax.swing.JFrame {
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
-                .addContainerGap(426, Short.MAX_VALUE))
+                .addContainerGap(369, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Inicio", jPanel4);
@@ -155,9 +171,9 @@ public class Presentacion extends javax.swing.JFrame {
 
         jLabel9.setText("N°Creditos");
 
-        cboCiclo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ciclo", "I", "II", "III", "IV", "V", "VI", "VII", "VII", "IX", "X" }));
+        cboCiclo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "I", "II", "III", "IV", "V", "VI", "VII", "VII", "IX", "X" }));
 
-        cboCreditos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Creditos", "1", "2", "3", "4" }));
+        cboCreditos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4" }));
 
         btnRegistrarA.setText("Registrar");
         btnRegistrarA.addActionListener(new java.awt.event.ActionListener() {
@@ -211,7 +227,7 @@ public class Presentacion extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel9)
                     .addComponent(cboCreditos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(404, Short.MAX_VALUE))
+                .addContainerGap(351, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Registrar Asignatura", jPanel2);
@@ -255,7 +271,7 @@ public class Presentacion extends javax.swing.JFrame {
                     .addComponent(txtNombreE, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCodigoE, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(513, Short.MAX_VALUE))
+                .addContainerGap(554, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -281,14 +297,19 @@ public class Presentacion extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(363, Short.MAX_VALUE))
+                .addContainerGap(314, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Registro Estudiante", jPanel1);
 
         jLabel11.setText("Codigo Estudiante");
 
-        jButton4.setText("Aceptar");
+        BtnBuscarEstudiante.setText("Aceptar");
+        BtnBuscarEstudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBuscarEstudianteActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Cancelar");
 
@@ -298,26 +319,41 @@ public class Presentacion extends javax.swing.JFrame {
 
         jLabel14.setText("DNI");
 
+        txtApellidosEM.setEnabled(false);
+
+        txtNombreEM.setEnabled(false);
+
         jLabel15.setText("Direccion");
+
+        txtDireccionEM.setEnabled(false);
 
         cboAsignaturaM.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Asignaturas" }));
 
         jLabel16.setText("Asignatura a Matricular");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        txtDniEM.setEnabled(false);
+
+        tblCursosM.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Codigo", "Nombre", "Ciclo", "Creditos"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblCursosM);
+        if (tblCursosM.getColumnModel().getColumnCount() > 0) {
+            tblCursosM.getColumnModel().getColumn(0).setMaxWidth(78);
+            tblCursosM.getColumnModel().getColumn(2).setMaxWidth(60);
+            tblCursosM.getColumnModel().getColumn(3).setMaxWidth(60);
+        }
 
-        jButton6.setText("Añadir");
+        BtnAddCursoM.setText("Añadir");
+        BtnAddCursoM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAddCursoMActionPerformed(evt);
+            }
+        });
 
         btnRegistrarM.setText("Registrar Matricula");
         btnRegistrarM.addActionListener(new java.awt.event.ActionListener() {
@@ -326,7 +362,7 @@ public class Presentacion extends javax.swing.JFrame {
             }
         });
 
-        cboCicloM.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboCicloM.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1er Ciclo", "2do Ciclo", "3er Ciclo", "4to Ciclo", "5to Ciclo", "6to Ciclo", "7mo Ciclo", "8vo Ciclo", "9no Ciclo", "10mo Ciclo" }));
         cboCicloM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboCicloMActionPerformed(evt);
@@ -346,11 +382,20 @@ public class Presentacion extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel16)
+                                .addComponent(jLabel11)
+                                .addGap(20, 20, 20)
+                                .addComponent(txtCodigoEM, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(cboCicloM, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37)
-                                .addComponent(cboAsignaturaM, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(BtnBuscarEstudiante)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton5)
+                                .addGap(327, 327, 327)
+                                .addComponent(lblCodigoM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(22, 22, 22))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 954, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(15, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,53 +414,45 @@ public class Presentacion extends javax.swing.JFrame {
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel13)
                                         .addGap(18, 18, 18)
-                                        .addComponent(txtApellidosEM, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtApellidosEM, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(lblCodigoM, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
-                                .addContainerGap())))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnRegistrarM))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addGap(20, 20, 20)
-                                .addComponent(txtCodigoEM, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton4)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton5)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                                .addComponent(jLabel16)
+                                .addGap(52, 52, 52)
+                                .addComponent(cboCicloM, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(cboAsignaturaM, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BtnAddCursoM, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRegistrarM)
+                .addGap(41, 41, 41))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(txtCodigoEM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addGap(32, 32, 32)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel12)
-                                .addComponent(txtNombreEM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel13)
-                                .addComponent(txtApellidosEM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(txtCodigoEM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BtnBuscarEstudiante)
+                            .addComponent(jButton5))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel12)
+                                    .addComponent(txtNombreEM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel13)
+                                    .addComponent(txtApellidosEM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
                         .addComponent(lblCodigoM, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -425,15 +462,15 @@ public class Presentacion extends javax.swing.JFrame {
                     .addComponent(txtDireccionEM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cboCicloM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnAddCursoM)
+                    .addComponent(jLabel16)
                     .addComponent(cboAsignaturaM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6)
-                    .addComponent(jLabel16))
+                    .addComponent(cboCicloM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(44, 44, 44)
                 .addComponent(btnRegistrarM)
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Matricula", jPanel3);
@@ -463,14 +500,14 @@ public class Presentacion extends javax.swing.JFrame {
                 .addGap(46, 46, 46))
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 918, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 37, Short.MAX_VALUE))
+                .addGap(0, 61, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton8)
                 .addGap(57, 57, 57))
         );
@@ -505,22 +542,49 @@ public class Presentacion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarEActionPerformed
 
     private void btnRegistrarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarMActionPerformed
-        // TODO add your handling code here:
+        registrarMatricula();
     }//GEN-LAST:event_btnRegistrarMActionPerformed
 
     private void cboCicloMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCicloMActionPerformed
         // TODO add your handling code here:
-        JComboBox that = cboCicloM;
-        for(int i = 0; i<that.getItemCount();i++){
-            System.out.println(that.getItemAt(i));
+        cboAsignaturaM.removeAllItems();
+        for(Asignatura a : this.findCursos()){
+            cboAsignaturaM.addItem(a.getNombre());
         }
-        
     }//GEN-LAST:event_cboCicloMActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void BtnBuscarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarEstudianteActionPerformed
+        String codigo = txtCodigoEM.getText();
+        Estudiante temp_E = new Estudiante();
+        temp_E.setCodigo(codigo);
+        temp_E = estudiantes.get(estudiantes.indexOf(temp_E));
+        txtNombreEM.setText(temp_E.getNombre());
+        txtApellidosEM.setText(temp_E.getApellidos());
+        txtDireccionEM.setText(temp_E.getDireccion());
+        txtDniEM.setText(temp_E.getDni());
+    }//GEN-LAST:event_BtnBuscarEstudianteActionPerformed
+
+    private void BtnAddCursoMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAddCursoMActionPerformed
+        Asignatura temp_A = this.findCursos().get(cboAsignaturaM.getSelectedIndex());
+        ((DefaultTableModel)tblCursosM.getModel()).addRow(new Object[]{temp_A.getCodigo(),temp_A.getNombre(),temp_A.getCiclo(),temp_A.getNumeroCreditos()});
+    }//GEN-LAST:event_BtnAddCursoMActionPerformed
     public void resgistrarAsignatura() {
         String codigo = txtCodigoA.getText();
         String nombreA = txtNombreA.getText();
-        int ciclo = Integer.parseInt(cboCiclo.getSelectedItem().toString());
-        int numeroCreditos = Integer.parseInt(cboCreditos.getSelectedItem().toString());
+        int ciclo = cboCiclo.getSelectedIndex()+1;
+        int numeroCreditos = cboCiclo.getSelectedIndex() + 1;
         Asignatura asignatura = new Asignatura(codigo, nombreA, ciclo, numeroCreditos);
         //DatoAsignatura.escribirAsignatura(asignatura);
         asignaturas.add(asignatura);
@@ -536,6 +600,9 @@ public class Presentacion extends javax.swing.JFrame {
         //DatoEstudiante.escribirEstudiante(estudiante);
         estudiantes.add(estudiante);      
     }
+    
+  
+    
     public void añadir(){
         ArrayList<Float> notas = new ArrayList<Float>();
         //añadir maximo 6 cursos 
@@ -543,25 +610,35 @@ public class Presentacion extends javax.swing.JFrame {
         ArrayList[] items = {asignaturas, notas};
         
 }
+    
+    private ArrayList<Asignatura> findCursos(){
+       int ciclo = cboCicloM.getSelectedIndex() + 1;
+       ArrayList<Asignatura> cursoCiclo = new ArrayList<Asignatura>();
+       for(Asignatura a: asignaturas){
+           if(Integer.parseInt(a.getCodigo().substring(0,1))==ciclo){
+               cursoCiclo.add(a);
+           }
+       }
+       return cursoCiclo;
+    }
+    
    public void registrarMatricula(){
         Matricula m = new Matricula();
         m.setFecha(c);
         m.setPeriodo(periodo); 
         String codigo=lblCodigoM.getText();   
-       Estudiante estudiante;
-       //Buscar el estudiante segun el codigo del label
-       
-       estudiante = estudiantes.get(DatoEstudiante.indexOf(txtCodigoEM.getText()));
-       
+        Estudiante estudiante = estudiantes.get(estudiantes.indexOf(new Estudiante(txtCodigoEM.getText(),"","","","")));       
         m.setEstudiante(estudiante);
-        
-        
-        ///Buscar la asignaturas segun el ciclo y luego agregar las asignaturas al cboAsignatura  
-        ///Agregar a la tabla
-        /// m.setCursosmatriculados(cursosMatrilados)
-        
-        
-        
+        DefaultTableModel model = (DefaultTableModel) tblCursosM.getModel();
+        for(int i = 0; i<tblCursosM.getRowCount();i++){
+            String codigoA = (String) model.getValueAt(i, 0);
+            String nombre = (String) model.getValueAt(i, 1);
+            String ciclo = (String) model.getValueAt(i, 2);
+            String nCreditos = (String) model.getValueAt(i, 3);
+            m.addAsignatura(new Asignatura(codigoA,nombre,Integer.parseInt(ciclo),Integer.parseInt(nCreditos)));
+            System.out.println(codigoA+" "+nombre+" "+ciclo+" "+nCreditos);
+        }   
+        matriculas.add(m);
     }
 
     /**
@@ -600,6 +677,8 @@ public class Presentacion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnAddCursoM;
+    private javax.swing.JButton BtnBuscarEstudiante;
     private javax.swing.JButton btnRegistrarA;
     private javax.swing.JButton btnRegistrarE;
     private javax.swing.JButton btnRegistrarM;
@@ -611,9 +690,7 @@ public class Presentacion extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton8;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
@@ -641,9 +718,9 @@ public class Presentacion extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JLabel lblCodigoM;
+    private javax.swing.JTable tblCursosM;
     private javax.swing.JTextField txtApellidosE;
     private javax.swing.JTextField txtApellidosEM;
     private javax.swing.JTextField txtCodigoA;

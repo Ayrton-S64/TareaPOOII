@@ -44,7 +44,7 @@ public class Matricula {
             return this.getFecha().get(Calendar.DAY_OF_MONTH);
         }
         public int getMes(){
-            return this.getFecha().get(Calendar.MONTH+1);
+            return this.getFecha().get(Calendar.MONTH)+1;
         }
         public int getYear(){
             return this.getFecha().get(Calendar.YEAR);
