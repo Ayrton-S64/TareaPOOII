@@ -64,7 +64,7 @@ public class ValidadorEstudiante {
         if(codigo.length()!=10){return false;}
         else{
             for(int i =0; i<10;i++){
-                if(Character.isDigit(codigo.charAt(i))){
+                if(!Character.isDigit(codigo.charAt(i))){
                     System.out.println(codigo.substring(0,i+1)+"<- simbolo no valido");
                     JOptionPane.showMessageDialog(null, codigo.substring(0,i+1)+"<- simbolo no valido");
                     return false;
