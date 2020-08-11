@@ -201,15 +201,15 @@ public class Presentacion extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jLabel8)
                     .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cboCreditos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cboCiclo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtNombreA, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
                     .addComponent(txtCodigoA))
-                .addGap(48, 48, 48)
+                .addGap(73, 73, 73)
                 .addComponent(btnRegistrarA)
-                .addGap(244, 244, 244))
+                .addGap(219, 219, 219))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,9 +225,9 @@ public class Presentacion extends javax.swing.JFrame {
                             .addComponent(jLabel7)
                             .addComponent(txtNombreA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addGap(42, 42, 42)
                         .addComponent(btnRegistrarA)))
-                .addGap(19, 19, 19)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(cboCiclo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -589,7 +589,11 @@ public class Presentacion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarAActionPerformed
-           resgistrarAsignatura();
+        String codigo = txtCodigoA.getText();
+        String nombre = txtNombreA.getText();   
+        if(ValidadorAsignatura.validarAsignatura(codigo, nombre)){
+            resgistrarAsignatura(codigo,nombre);
+        }
     }//GEN-LAST:event_btnRegistrarAActionPerformed
 
     private void btnRegistrarEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEActionPerformed
@@ -624,7 +628,8 @@ public class Presentacion extends javax.swing.JFrame {
     }//GEN-LAST:event_cboCicloMActionPerformed
 
     private void btnRegistrarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarMActionPerformed
-
+        int nCursos = tblCursosM.getRowCount();
+        String codigoE = txtCodigoEM.getText();
         registrarMatricula();
     }//GEN-LAST:event_btnRegistrarMActionPerformed
 
@@ -643,9 +648,7 @@ public class Presentacion extends javax.swing.JFrame {
         txtDireccionEM.setText(temp_E.getDireccion());
         txtDniEM.setText(temp_E.getDni());
     }//GEN-LAST:event_BtnBuscarEstudianteActionPerformed
-    public void resgistrarAsignatura() {
-        String codigo = txtCodigoA.getText();
-        String nombreA = txtNombreA.getText();
+    public void resgistrarAsignatura(String codigo, String nombreA) {
         int ciclo = cboCiclo.getSelectedIndex()+1;
         int numeroCreditos = cboCiclo.getSelectedIndex() + 1;
         Asignatura asignatura = new Asignatura(codigo, nombreA, ciclo, numeroCreditos);

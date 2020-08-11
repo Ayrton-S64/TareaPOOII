@@ -86,7 +86,7 @@ public class DetalleMatriculas {
             for(int i=0;i<numRegistros;i++){
                 flujo.seek(i*TAMREG);
                 String tempCodM = flujo.readUTF();
-                if(tempCodM.equals(codMatricula)){
+                if(tempCodM.substring(3,13).equals(codMatricula.substring(3,13))){
                     String tempCodA = flujo.readUTF();
                     if(tempCodA.equals(codAsignatura)){
                         c++;
@@ -103,6 +103,33 @@ public class DetalleMatriculas {
             }
         }
         return c;
+    }
+    
+    public static boolean condicionEstudiante(String codEstudiante){        
+        try {
+            crearArchivo();
+            for(int i=numRegistros-1;i>=0;i--){
+                flujo.seek(i*TAMREG);
+                String tempCodM = flujo.readUTF();
+                if(tempCodM.substring(3,13).equals(codEstudiante)){
+                    String tempCodA = flujo.readUTF();
+                    int nVeces = flujo.readInt();
+                    if(nVeces == 4){
+                        return false;
+                    }
+                }
+            }
+        } catch (IOException ex) {
+            System.out.println("ERROR: "+ex);
+        } finally {
+            try{
+                flujo.close();
+            }catch(IOException ex){
+                System.out.println("El archivo ya se encuentra cerrado: "+ex);
+            }
+        }
+        
+        return true;
     }
     
     public static ArrayList<Asignatura> getCursos(String codM){
