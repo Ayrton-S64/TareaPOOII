@@ -46,7 +46,7 @@ public class PeriodoAcademico {
         }
         
         public String genCode(){
-            String s = semestre=="I"?"1":semestre=="II"?"2":"3";
+            String s = semestre.equals("I")?"1":semestre.equals("II")?"2":"3";
             return Integer.toString(year).substring(2) + s;
         }
         

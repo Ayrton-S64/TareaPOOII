@@ -33,6 +33,7 @@ public class DetalleMatriculas {
     }
     
     public static String escribirMatricula(Matricula matricula){
+        System.out.println("Escribiendo en DetallesMatriculas");
         int n = 0;
         String mensaje = "";
         try {
@@ -48,24 +49,61 @@ public class DetalleMatriculas {
             return mensaje;
         }
     }
+    
+    public static boolean modifyNota(String codMatricula, String codAsignatura,float nota){
+        System.out.println("modifyNota]]]]");
+        boolean validacion = true;
+        try{
+            crearArchivo();
+            for(int i = numRegistros-1;i>=0;i--){
+                flujo.seek(i*TAMREG);
+                String tempCodM = flujo.readUTF();
+                if(tempCodM.equals(codMatricula)){
+                    String tempCodA = flujo.readUTF();
+                    if(tempCodA.equals(codAsignatura)){
+                        flujo.readInt();
+                        System.out.println("Escribiendo: " + nota);
+                        flujo.writeFloat(nota);
+                    }
+                }
+            }
+
+        }catch(IOException ex){
+            System.out.println("[DetalleMatriculas]Problema de E/S: " + ex.getMessage());
+            System.out.println(ex.getCause());
+            validacion = false;
+        }finally{
+            try {
+                flujo.close();
+            } catch (IOException ex) {
+                System.out.println("El flujo ya estaba cerrado: " + ex.getMessage());
+            }
+        }
+        return validacion;
+    }
+    
     public static int setMatricula(int pos, Matricula matricula){
+        System.out.println("En set Matricula");
         int n= 1;
         try {
-            if (matricula.getSize() + 4 > TAMREG) {
+            //El if es removido ya que el tamaño de registro nunca será excedido
+            //if (matricula.getSize() + 4 > TAMREG) {
                 
-            } else {
+            //} else {
                 crearArchivo();
                 ArrayList<Asignatura> lista = matricula.getCursosMatriculados();
                 for(int i =0 ; i < lista.size();i++){
+                    System.out.println("Escribribiendo asignatura: "+lista.get(i).getNombre());
                     flujo.seek(pos * TAMREG);
                     flujo.writeUTF(matricula.genCode());
                     flujo.writeUTF(lista.get(i).getCodigo());
                     flujo.writeInt(DetalleMatriculas.countAsignatura(matricula.genCode(), lista.get(i).getCodigo()));
+                    //System.out.println(matricula.getCalificaciones().get(i));
                     flujo.writeFloat(matricula.getCalificaciones().get(i));
                     pos++;
                     n++;
+                //  }
                 }
-            }
         } catch (IOException ex) {
             System.out.println("Excepción: " + ex.getMessage());
             n=0;
@@ -133,6 +171,7 @@ public class DetalleMatriculas {
     }
     
     public static ArrayList<Asignatura> getCursos(String codM){
+        System.out.println("GetCursos");
         ArrayList<Asignatura> list = new ArrayList<Asignatura>();
         String codigoM;
         String codigoA;
@@ -160,31 +199,46 @@ public class DetalleMatriculas {
         return list;
     }
     public static ArrayList<Float> getNotas(String codM){
+        System.out.println("GetNotas");
         ArrayList<Float> list = new ArrayList<Float>();
         String codigoM;
         String codigoA;
-        float nota = 0.0f;
+        Float nota = 0.0f;
         try {
-            crearArchivo();
+            
             for(int i = 0; i<numRegistros;i++){
-                flujo.seek(i * TAMREG);
-                codigoM = flujo.readUTF();
-                if(codigoM.equals(codM)){
-                    flujo.readUTF();
-                    flujo.readInt();
-                    nota = flujo.readFloat();
-                    list.add(nota);
+                System.out.println("iteracion: "+i);
+                try{
+                    crearArchivo();
+                    flujo.seek(i * TAMREG);
+                    codigoM = flujo.readUTF();
+                    System.out.println("CodigoM: "+codigoM);
+                    if(codigoM.equals(codM)){
+                        System.out.println(flujo.readUTF());
+                        System.out.println(flujo.readInt());
+                        nota = flujo.readFloat();
+                        nota = (nota == null)?0.0f:nota;
+                        System.out.println("nota:"+ nota);
+                        
+                    }
+                }catch(IOException ex){
+                    System.out.println("[DetalleMatriculas]Problema de E/S: " + ex.getMessage());
+                    System.out.println("Nota = "+nota+ "|" + ex.getCause());
                 }
+                list.add(nota);
             }
-        } catch (IOException ex) {
-            System.out.println("Problema de E/S: " + ex.getMessage());
         } finally {
             try {
+                System.out.println("Cerrando flujo");
                 flujo.close();
             } catch (IOException ex) {
                 System.out.println("El flujo ya estaba cerrado: "
                         + ex.getMessage());
             }
+        }
+        
+        for(Float f : list){
+            System.out.println("f:"+f);
         }
         return list;
     }

@@ -40,6 +40,13 @@ public class ValidadorMatricula {
         //     No perminitir que se registren alumnos con 4 jalados.
         
         
+        public static boolean validarMatricula(String codigoEstudiante,ArrayList<Asignatura> cursos){
+            if(checkEstudiante(codigoEstudiante) && checkCursos(codigoEstudiante, cursos)){
+                return true;
+            }
+            return false;
+        }
+        
         public static boolean checkCursos(String codigoEstudiante,ArrayList<Asignatura> cursos){
             int nCursos = cursos.size();
             ArrayList<Matricula> matriculas = DatoMatricula.getContenido();
@@ -48,28 +55,28 @@ public class ValidadorMatricula {
             }
             boolean encontrado = false;
             int i = matriculas.size();
-            do{
-                i--;
-                Matricula temp_m = matriculas.get(i);
-                if(temp_m.getEstudiante().equals(new Estudiante(codigoEstudiante,"","","",""))){
-                    for(int j = cursos.size()-1;j>=0;j--){
-                        ArrayList<Asignatura> tempC = temp_m.getCursosMatriculados();
-                        for(int k = 0; k<tempC.size();k++){
-                            if(tempC.get(k).equals(cursos.get(j))){
-                                if(temp_m.getCalificaciones().get(k)>=10.5){
-                                    String mensaje = "No puede matricularse otra vez al curso: "+cursos.get(j).getNombre();
-                                    JOptionPane.showMessageDialog(null, mensaje);
-                                    System.out.println(mensaje);
-                                    return false;
-                                }
-                                cursos.remove(j);
+            if(i!=0){
+                do{
+                    i--;
+                    Matricula temp_m = matriculas.get(i);
+                    if(temp_m.getEstudiante().equals(new Estudiante(codigoEstudiante,"","","",""))){
+                        for(int j = cursos.size()-1;j>=0;j--){
+                            ArrayList<Asignatura> tempC = temp_m.getCursosMatriculados();
+                            for(int k = 0; k<tempC.size();k++){
+                                if(tempC.get(k).equals(cursos.get(j))){
+                                    if(temp_m.getCalificaciones().get(k)>=10.5){
+                                        String mensaje = "No puede matricularse otra vez al curso: "+cursos.get(j).getNombre();
+                                        JOptionPane.showMessageDialog(null, mensaje);
+                                        System.out.println(mensaje);
+                                        return false;
+                                    }
+                                    cursos.remove(j);
+                                    }
                             }
                         }
                     }
-                }
-            }while(cursos.size()>0 && i!=0);
-            
-            
+                }while(cursos.size()>0 && i!=0);
+            }
             return true;
         }    
 }

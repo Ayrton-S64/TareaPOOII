@@ -5,9 +5,7 @@
  */
 package presentacion;
 
-import accesoDatos.DatoAsignatura;
-import accesoDatos.DatoEstudiante;
-import accesoDatos.DatoMatricula;
+import accesoDatos.*;
 import entidades.Asignatura;
 import entidades.Estudiante;
 import entidades.Matricula;
@@ -53,10 +51,11 @@ public class Presentacion extends javax.swing.JFrame {
         jEditorPane1 = new javax.swing.JEditorPane();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnRAsignatura = new javax.swing.JButton();
+        btnREstudiante = new javax.swing.JButton();
+        btnMatricula = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
+        btnRNotas = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -102,71 +101,83 @@ public class Presentacion extends javax.swing.JFrame {
         lblCodigoM = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jButton8 = new javax.swing.JButton();
+        tblNotas = new javax.swing.JTable();
+        btnSiguiente = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        txtCodigoMNotas = new javax.swing.JTextField();
+        txtCodigoENotas = new javax.swing.JTextField();
+        txtApellidosNotas = new javax.swing.JTextField();
+        txtNombreENotas = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        lblMatriculasRestantes = new javax.swing.JLabel();
 
         jScrollPane3.setViewportView(jEditorPane1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Asignatura");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRAsignatura.setText("Asignatura");
+        btnRAsignatura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRAsignaturaActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Estudiante");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnREstudiante.setText("Estudiante");
+        btnREstudiante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnREstudianteActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Matricula");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnMatricula.setText("Matricula");
+        btnMatricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnMatriculaActionPerformed(evt);
             }
         });
 
         jLabel17.setText("Registrar");
+
+        btnRNotas.setText("Notas");
+        btnRNotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRNotasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(29, 29, 29)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel17)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btnRAsignatura)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(btnREstudiante)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3)))
-                .addContainerGap(396, Short.MAX_VALUE))
+                        .addComponent(btnMatricula)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnRNotas, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(312, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(130, 130, 130)
+                .addGap(58, 58, 58)
                 .addComponent(jLabel17)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(284, Short.MAX_VALUE))
+                    .addComponent(btnRAsignatura)
+                    .addComponent(btnREstudiante)
+                    .addComponent(btnMatricula)
+                    .addComponent(btnRNotas))
+                .addContainerGap(356, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Inicio", jPanel4);
@@ -483,7 +494,7 @@ public class Presentacion extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Matricula", jPanel3);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblNotas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -496,12 +507,17 @@ public class Presentacion extends javax.swing.JFrame {
                 "Asignaturas Matriculadas", "Nota"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
-        if (jTable2.getColumnModel().getColumnCount() > 0) {
-            jTable2.getColumnModel().getColumn(1).setMaxWidth(60);
+        jScrollPane2.setViewportView(tblNotas);
+        if (tblNotas.getColumnModel().getColumnCount() > 0) {
+            tblNotas.getColumnModel().getColumn(1).setMaxWidth(60);
         }
 
-        jButton8.setText("Siguiente");
+        btnSiguiente.setText("Siguiente");
+        btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiguienteActionPerformed(evt);
+            }
+        });
 
         jLabel10.setText("Codigo de Matricula");
 
@@ -511,13 +527,9 @@ public class Presentacion extends javax.swing.JFrame {
 
         jLabel20.setText("Nombre");
 
-        jTextField1.setText("jTextField1");
+        jLabel21.setText("Matriculas restantes: ");
 
-        jTextField2.setText("jTextField2");
-
-        jTextField3.setText("jTextField3");
-
-        jTextField4.setText("jTextField4");
+        lblMatriculasRestantes.setText("00");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -534,17 +546,21 @@ public class Presentacion extends javax.swing.JFrame {
                             .addComponent(jLabel20))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-                            .addComponent(jTextField4)))
+                            .addComponent(txtCodigoMNotas)
+                            .addComponent(txtCodigoENotas)
+                            .addComponent(txtApellidosNotas, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                            .addComponent(txtNombreENotas)))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(311, 311, 311)
-                        .addComponent(jButton8)))
-                .addContainerGap(303, Short.MAX_VALUE))
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel21)
+                        .addGap(84, 84, 84)
+                        .addComponent(lblMatriculasRestantes)
+                        .addGap(127, 127, 127)
+                        .addComponent(btnSiguiente)))
+                .addContainerGap(287, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -552,23 +568,26 @@ public class Presentacion extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCodigoMNotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCodigoENotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtApellidosNotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombreENotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
                 .addGap(16, 16, 16)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton8)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSiguiente)
+                    .addComponent(jLabel21)
+                    .addComponent(lblMatriculasRestantes))
                 .addGap(137, 137, 137))
         );
 
@@ -607,17 +626,17 @@ public class Presentacion extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnRegistrarEActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnRAsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRAsignaturaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnRAsignaturaActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnREstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnREstudianteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnREstudianteActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMatriculaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnMatriculaActionPerformed
 
     private void cboCicloMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCicloMActionPerformed
         // TODO add your handling code here:
@@ -648,6 +667,53 @@ public class Presentacion extends javax.swing.JFrame {
         txtDireccionEM.setText(temp_E.getDireccion());
         txtDniEM.setText(temp_E.getDni());
     }//GEN-LAST:event_BtnBuscarEstudianteActionPerformed
+
+    private void btnRNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRNotasActionPerformed
+        Matricula m = matriculasPorPeriodo(this.periodo).get(0);
+        txtCodigoMNotas.setText(m.genCode());
+        Estudiante e = m.getEstudiante();
+        txtCodigoENotas.setText(e.getCodigo());
+        txtApellidosNotas.setText(e.getApellidos());
+        txtNombreENotas.setText(e.getNombre());
+        generateTable(tblNotas,m);
+        lblMatriculasRestantes.setText(Integer.toString(matriculasPorPeriodo(this.periodo).size()));
+        jTabbedPane1.setSelectedIndex(4);
+    }//GEN-LAST:event_btnRNotasActionPerformed
+
+    private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
+        int restantes = Integer.parseInt(lblMatriculasRestantes.getText());
+        int total = matriculasPorPeriodo(this.periodo).size();
+        DefaultTableModel model = (DefaultTableModel) tblNotas.getModel();
+        Matricula m = matriculasPorPeriodo(this.periodo).get(total-restantes);
+        for(int i = 0; i<tblNotas.getRowCount();i++){
+            System.out.println("Boton siguiente]"+m.getCursosMatriculados().get(i).getNombre());
+            System.out.println("i:"+i);
+            System.out.println(model.getValueAt(i,0));
+            float nota = Float.parseFloat((String)model.getValueAt(i, 1));
+            m.getCalificaciones().set(i, nota);
+            DetalleMatriculas.modifyNota(m.genCode(), m.getCursosMatriculados().get(i).getCodigo(), nota);
+        }
+    
+        lblMatriculasRestantes.setText(Integer.toString(Integer.parseInt(lblMatriculasRestantes.getText())-1));
+        
+        restantes = Integer.parseInt(lblMatriculasRestantes.getText())-1;
+        if(restantes > 0){
+            total = matriculasPorPeriodo(this.periodo).size();
+            m = matriculasPorPeriodo(this.periodo).get(total-restantes);
+            txtCodigoMNotas.setText(m.genCode());
+            Estudiante e = m.getEstudiante();
+            txtCodigoENotas.setText(e.getCodigo());
+            txtApellidosNotas.setText(e.getApellidos());
+            txtNombreENotas.setText(e.getNombre());
+            generateTable(tblNotas,m);
+            lblMatriculasRestantes.setText(Integer.toString(restantes));
+        }else{
+            JOptionPane.showMessageDialog(null,"Ya no quedan mas estudiantes por registrar");
+            System.out.println("Se terminaron de registrar las notas");
+            jTabbedPane1.setSelectedIndex(0);
+        }
+        
+    }//GEN-LAST:event_btnSiguienteActionPerformed
     public void resgistrarAsignatura(String codigo, String nombreA) {
         int ciclo = cboCiclo.getSelectedIndex()+1;
         int numeroCreditos = cboCiclo.getSelectedIndex() + 1;
@@ -670,7 +736,8 @@ public class Presentacion extends javax.swing.JFrame {
         
         m.setPeriodo(periodo); 
         String codigo=lblCodigoM.getText();   
-        Estudiante estudiante = estudiantes.get(estudiantes.indexOf(new Estudiante(txtCodigoEM.getText(),"","","","")));       
+        String codigoE = txtCodigoEM.getText();
+        Estudiante estudiante = estudiantes.get(estudiantes.indexOf(new Estudiante(codigoE,"","","","")));       
         m.setEstudiante(estudiante);
         DefaultTableModel model = (DefaultTableModel) tblCursosM.getModel();
         for(int i = 0; i<tblCursosM.getRowCount();i++){
@@ -679,9 +746,14 @@ public class Presentacion extends javax.swing.JFrame {
             int ciclo = (int) model.getValueAt(i, 2);
             int nCreditos = (int) model.getValueAt(i, 3);
             m.addAsignatura(new Asignatura(codigoA,nombre,ciclo,nCreditos));
+            m.addCalificacion(0.0f);
             System.out.println(codigoA+" "+nombre+" "+ciclo+" "+nCreditos);
-        }   
-        matriculas.add(m);
+        }
+        if(ValidadorMatricula.validarMatricula(codigoE, asignaturas)){
+            matriculas.add(m);
+            DatoMatricula.escribirMatricula(m);
+            DetalleMatriculas.escribirMatricula(m);
+        }
     }
     
     public void añadir(){
@@ -690,7 +762,23 @@ public class Presentacion extends javax.swing.JFrame {
         
         ArrayList[] items = {asignaturas, notas};
         
-}
+    }
+    
+    public ArrayList<Matricula> matriculasPorPeriodo(PeriodoAcademico pa){
+        ArrayList<Matricula> data = new ArrayList<Matricula>();
+        for(int i = matriculas.size()-1; i>=0 ; i--){
+            System.out.println("buscando matricula en posicion: " + i);
+            Matricula temp_m = matriculas.get(i);
+            System.out.println(temp_m.toString());
+            System.out.println("Periodo:" + temp_m.getPeriodo().toString());
+            System.out.println("CodigoE:" + temp_m.getEstudiante().getCodigo());
+            
+            if(pa.genCode().equals(temp_m.genCode().substring(0,3))){
+                data.add(temp_m);
+            }
+        }
+        return data;
+    }
     
     private ArrayList<Asignatura> findCursos(){
        int ciclo = cboCicloM.getSelectedIndex() + 1;
@@ -701,6 +789,24 @@ public class Presentacion extends javax.swing.JFrame {
            }
        }
        return cursoCiclo;
+    }
+    
+    private void generateTable(JTable table, Matricula matricula) {
+        DefaultTableModel model = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return column!=0;
+            }
+        };
+        model.addColumn("Asignaturas matricuados");
+        model.addColumn("Nota");
+        table.setModel(model);
+        ArrayList<Asignatura> cursos = matricula.getCursosMatriculados();
+        ArrayList<Float> notas = matricula.getCalificaciones();
+        for(int i = 0; i< cursos.size(); i++){
+            String[] data = {cursos.get(i).getNombre(),Float.toString(notas.get(i))};
+            model.addRow(data);
+        }
     }
     /**
      * @param args the command line arguments
@@ -740,19 +846,20 @@ public class Presentacion extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAddCursoM;
     private javax.swing.JButton BtnBuscarEstudiante;
+    private javax.swing.JButton btnMatricula;
+    private javax.swing.JButton btnRAsignatura;
+    private javax.swing.JButton btnREstudiante;
+    private javax.swing.JButton btnRNotas;
     private javax.swing.JButton btnRegistrarA;
     private javax.swing.JButton btnRegistrarE;
     private javax.swing.JButton btnRegistrarM;
+    private javax.swing.JButton btnSiguiente;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox cboAsignaturaM;
     private javax.swing.JComboBox cboCiclo;
     private javax.swing.JComboBox cboCicloM;
     private javax.swing.JComboBox cboCreditos;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton8;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -767,6 +874,7 @@ public class Presentacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -783,18 +891,18 @@ public class Presentacion extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel lblCodigoM;
+    private javax.swing.JLabel lblMatriculasRestantes;
     private javax.swing.JTable tblCursosM;
+    private javax.swing.JTable tblNotas;
     private javax.swing.JTextField txtApellidosE;
     private javax.swing.JTextField txtApellidosEM;
+    private javax.swing.JTextField txtApellidosNotas;
     private javax.swing.JTextField txtCodigoA;
     private javax.swing.JTextField txtCodigoE;
     private javax.swing.JTextField txtCodigoEM;
+    private javax.swing.JTextField txtCodigoENotas;
+    private javax.swing.JTextField txtCodigoMNotas;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtDireccionEM;
     private javax.swing.JTextField txtDni;
@@ -802,5 +910,6 @@ public class Presentacion extends javax.swing.JFrame {
     private javax.swing.JTextField txtNombreA;
     private javax.swing.JTextField txtNombreE;
     private javax.swing.JTextField txtNombreEM;
+    private javax.swing.JTextField txtNombreENotas;
     // End of variables declaration//GEN-END:variables
 }

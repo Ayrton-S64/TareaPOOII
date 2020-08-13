@@ -109,7 +109,8 @@ public class DatoEstudiante {
             direccion = flujo.readUTF();
             estudiante = new Estudiante(codigo,dni,apellidos,nombre,direccion);
         } catch (IOException ex) {
-            System.out.println("Problema de E/S: " + ex.getMessage());
+            System.out.println("Problema de E/S en DatoEstudiante: " + ex.getMessage());
+            System.out.println(pos*TAMREG);
         } finally {
             try {
                 flujo.close();

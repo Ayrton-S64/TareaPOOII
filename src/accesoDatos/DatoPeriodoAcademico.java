@@ -57,8 +57,11 @@ public class DatoPeriodoAcademico {
                 crearArchivo();
                 flujo.seek(posicion * TAMREG);
                 flujo.writeUTF(periodoAcademico.genCode());
+                System.out.println(periodoAcademico.genCode());
                 flujo.writeInt(periodoAcademico.getYear());
+                System.out.println(periodoAcademico.getYear());
                 flujo.writeUTF(periodoAcademico.getSemestre());
+                System.out.println(periodoAcademico.getSemestre());
                 mensaje = "ok";
             }
         } catch (IOException ex) {
@@ -74,31 +77,43 @@ public class DatoPeriodoAcademico {
     }
     
     public static int indexOF(String code){
+        System.out.println("____EjecutandoIndexOF_________");
         int index = -1;
         String temp;
         ArrayList<PeriodoAcademico> listPA = DatoPeriodoAcademico.getContenido();
         for(int i = 0;i<listPA.size();i++){
+            System.out.println(code+"=="+listPA.get(i).genCode()+"?");
+            System.out.println(listPA.get(i).getSemestre().getClass());
             if(listPA.get(i).genCode().equals(code)){
                 index = i;
             }
         }
+        System.out.println("retornado: "+index);
+        System.out.println("_____TerminandoIndexOf_____");
         return index;
     }
     
     public static PeriodoAcademico getPeriodoAcademico(int pos) {
         int year;
         String semestre;
-        
+        System.out.println(pos);
         PeriodoAcademico periodoAcademico = null;
         try {
             crearArchivo();
+            System.out.println("archivoCreado");
             flujo.seek(pos * TAMREG);
-            flujo.skipBytes(8);
+            System.out.println("seek realizaco");
+            flujo.readUTF();
+            System.out.println("codigo saltado");
             year = flujo.readInt();
+            System.out.println("año leido: "+ year);
             semestre = flujo.readUTF();
+            System.out.println("semestre leido: "+semestre);
             periodoAcademico = new PeriodoAcademico(year,semestre);
+            System.out.println(periodoAcademico.genCode()+"]]]");
         } catch (IOException ex) {
-            System.out.println("Problema de E/S: " + ex.getMessage());
+            System.out.println("Problema de E/S en DatoPA: " + ex.getMessage());
+            System.out.println(pos*TAMREG);
         } finally {
             try {
                 flujo.close();

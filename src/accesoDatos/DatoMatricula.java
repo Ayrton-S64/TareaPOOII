@@ -77,6 +77,7 @@ public class DatoMatricula {
         return mensaje;
     }   
     public static Matricula getMatricula(int pos){
+        System.out.println("]]]]]]]]]CorriendoGetMatricula");
         GregorianCalendar f = new GregorianCalendar();
         String codM = "",codPA = "",codE = "";
         int dia= 0, mes = 0, year = 0;
@@ -107,7 +108,13 @@ public class DatoMatricula {
         }
         //Se termino de leer el archivo
         f.set(year, mes-1, dia);
-        pa = DatoPeriodoAcademico.getPeriodoAcademico(DatoPeriodoAcademico.indexOF(codPA));
+        System.out.println("check en getMatricula-DatoMatricula");
+        System.out.println("Matricula codPA:"+codPA);
+        int indexPa = DatoPeriodoAcademico.indexOF(codPA);
+        System.out.println("index codPA: "+indexPa);
+        pa = DatoPeriodoAcademico.getPeriodoAcademico(indexPa);
+        System.out.println(pa.genCode());
+        System.out.println("_____________________");
         estudiante = DatoEstudiante.getEstudiante(DatoEstudiante.indexOf(codE));
         asignaturas = DetalleMatriculas.getCursos(codM);
         calificaciones = DetalleMatriculas.getNotas(codM);
@@ -119,6 +126,7 @@ public class DatoMatricula {
         try {
             crearArchivo();
             for (int i = 0; i < numRegistros; i++) {
+                System.out.println("]]]]]]]]ObteniendoMatricula en posicion ->"+i);
                 lista.add(getMatricula(i));
             }
         } finally {

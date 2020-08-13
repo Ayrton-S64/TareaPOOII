@@ -104,7 +104,8 @@ public class DatoAsignatura {
             numeroCreditos = flujo.readInt();
             asignatura = new Asignatura(codigo,nombre,ciclo,numeroCreditos);
         } catch (IOException ex) {
-            System.out.println("Problema de E/S: " + ex.getMessage());
+            System.out.println("Problema de E/S en DatoAsignatura: " + ex.getMessage());
+            System.out.println(pos*TAMREG);
         } finally {
             try {
                 flujo.close();
