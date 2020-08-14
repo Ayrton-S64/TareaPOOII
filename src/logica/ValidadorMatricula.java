@@ -24,7 +24,6 @@ public class ValidadorMatricula {
                     return false;
                 }
             }
-            
         }
         if(!DetalleMatriculas.condicionEstudiante(codigo)){
             String mensaje = "El alumno ["+codigo+"] no puede ser matriculado, ya que perdio la condicion de estudiante.";

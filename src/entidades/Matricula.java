@@ -84,7 +84,17 @@ public class Matricula {
 		}
 		cursosMatriculados.add(a);
 	}
-
+        
+        public int tieneCurso(String codA){
+            int index = -1;
+            for(int i = 0; i<this.getCursosMatriculados().size();i++){
+                if(this.getCursosMatriculados().get(i).getCodigo().equals(codA)){
+                    index = i;
+                }
+            }
+            return index;
+        }
+        
 	public ArrayList<Float> getCalificaciones() {
 		return calificaciones;
 	}
