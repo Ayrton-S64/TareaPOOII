@@ -60,8 +60,8 @@ public class Presentacion extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         lblPeriodoInicio = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnIrDatosE = new javax.swing.JButton();
+        btnIrDatosA = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -190,9 +190,19 @@ public class Presentacion extends javax.swing.JFrame {
 
         jLabel23.setText("Listados");
 
-        jButton1.setText("Datos Estudiante");
+        btnIrDatosE.setText("Datos Estudiante");
+        btnIrDatosE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIrDatosEActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Datos Asignatura");
+        btnIrDatosA.setText("Datos Asignatura");
+        btnIrDatosA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIrDatosAActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -222,9 +232,9 @@ public class Presentacion extends javax.swing.JFrame {
                                 .addComponent(btnRNotas, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(60, 60, 60)
-                        .addComponent(jButton1)
+                        .addComponent(btnIrDatosE)
                         .addGap(33, 33, 33)
-                        .addComponent(jButton2)))
+                        .addComponent(btnIrDatosA)))
                 .addContainerGap(282, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -246,8 +256,8 @@ public class Presentacion extends javax.swing.JFrame {
                 .addComponent(jLabel23)
                 .addGap(26, 26, 26)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(btnIrDatosA)
+                    .addComponent(btnIrDatosE))
                 .addContainerGap(272, Short.MAX_VALUE))
         );
 
@@ -949,6 +959,7 @@ public class Presentacion extends javax.swing.JFrame {
         if(ValidadorAsignatura.validarAsignatura(codigo, nombre)){
             resgistrarAsignatura(codigo,nombre);
         }
+        jTabbedPane1.setSelectedIndex(0);
         txtCodigoA.setText("");
         txtNombreA.setText("");
         cboCiclo.setSelectedIndex(0);
@@ -964,6 +975,7 @@ public class Presentacion extends javax.swing.JFrame {
         if(ValidadorEstudiante.validarEstudiante(codigo,dni,apellidos,nombre,direccion)){
             registrarEstudiante(nombre,apellidos,dni,codigo,direccion);
         }
+        jTabbedPane1.setSelectedIndex(0);
         txtNombreE.setText("");
         txtApellidosE.setText("");
         txtDni.setText("");
@@ -1143,6 +1155,14 @@ public class Presentacion extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnBuscarDatosAActionPerformed
+
+    private void btnIrDatosEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIrDatosEActionPerformed
+        jTabbedPane1.setSelectedIndex(5);
+    }//GEN-LAST:event_btnIrDatosEActionPerformed
+
+    private void btnIrDatosAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIrDatosAActionPerformed
+        jTabbedPane1.setSelectedIndex(6);
+    }//GEN-LAST:event_btnIrDatosAActionPerformed
     
     public void resgistrarAsignatura(String codigo, String nombreA) {
         int ciclo = cboCiclo.getSelectedIndex()+1;
@@ -1295,6 +1315,8 @@ public class Presentacion extends javax.swing.JFrame {
     private javax.swing.JButton BtnBuscarEstudiante;
     private javax.swing.JButton btnBuscarDatosA;
     private javax.swing.JButton btnBuscarDatosE;
+    private javax.swing.JButton btnIrDatosA;
+    private javax.swing.JButton btnIrDatosE;
     private javax.swing.JButton btnMatricula;
     private javax.swing.JButton btnRAsignatura;
     private javax.swing.JButton btnREstudiante;
@@ -1310,8 +1332,6 @@ public class Presentacion extends javax.swing.JFrame {
     private javax.swing.JComboBox cboCiclo;
     private javax.swing.JComboBox cboCicloM;
     private javax.swing.JComboBox cboCreditos;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
