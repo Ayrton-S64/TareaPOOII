@@ -41,7 +41,7 @@ public class DetalleMatriculas {
             flujo.close();
             n = setMatricula(numRegistros, matricula);
             if(n==matricula.getCursosMatriculados().size()){
-                numRegistros++;
+                numRegistros+=n;
             }
         } catch (IOException ex) {
             mensaje = "Excepcion : "+ex.getMessage();
