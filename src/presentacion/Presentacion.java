@@ -138,17 +138,17 @@ public class Presentacion extends javax.swing.JFrame {
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         txtCodADatosA = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel31 = new javax.swing.JLabel();
         txtNombreADatosA = new javax.swing.JTextField();
         jLabel32 = new javax.swing.JLabel();
         txtCicloADatosA = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
-        txtNCrediosADatosA = new javax.swing.JTextField();
+        txtNCreditosADatosA = new javax.swing.JTextField();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblDatosA = new javax.swing.JTable();
         btnRegresarDatosA = new javax.swing.JButton();
         btnBuscarDatosA = new javax.swing.JButton();
+        txtPeriodoAcademicoDatosA = new javax.swing.JTextField();
 
         jScrollPane3.setViewportView(jEditorPane1);
 
@@ -739,21 +739,17 @@ public class Presentacion extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnRegresarDatosE, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addGap(121, 121, 121)
                             .addComponent(jLabel24)
                             .addGap(18, 18, 18)
-                            .addComponent(txtCodEDatoE, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(47, 47, 47)
+                            .addComponent(txtCodEDatoE, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(31, 31, 31)
                             .addComponent(btnBuscarDatosE))
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addGap(59, 59, 59)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel5Layout.createSequentialGroup()
-                                    .addComponent(jLabel28)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txtDireccionEDatosE, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel5Layout.createSequentialGroup()
                                     .addComponent(jLabel25)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -761,8 +757,12 @@ public class Presentacion extends javax.swing.JFrame {
                                     .addGap(59, 59, 59)
                                     .addComponent(jLabel26)
                                     .addGap(18, 18, 18)
-                                    .addComponent(txtApellidosEDatosE, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 0, 0))))
+                                    .addComponent(txtApellidosEDatosE, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel5Layout.createSequentialGroup()
+                                    .addComponent(jLabel28)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtDireccionEDatosE, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(17, 17, 17))))
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addGap(101, 101, 101)
                             .addComponent(jLabel27)
@@ -791,11 +791,14 @@ public class Presentacion extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
                     .addComponent(txtNombreEDatosE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel28)
-                    .addComponent(txtDireccionEDatosE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(jLabel28))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(txtDireccionEDatosE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(29, 29, 29)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnRegresarDatosE)
@@ -808,8 +811,6 @@ public class Presentacion extends javax.swing.JFrame {
 
         jLabel30.setText("Periodo academico: ");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel31.setText("Nombre: ");
 
         txtNombreADatosA.setEnabled(false);
@@ -820,7 +821,7 @@ public class Presentacion extends javax.swing.JFrame {
 
         jLabel33.setText("N° Creditos");
 
-        txtNCrediosADatosA.setEnabled(false);
+        txtNCreditosADatosA.setEnabled(false);
 
         tblDatosA.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -843,6 +844,11 @@ public class Presentacion extends javax.swing.JFrame {
         });
 
         btnBuscarDatosA.setText("Buscar");
+        btnBuscarDatosA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarDatosAActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -866,7 +872,7 @@ public class Presentacion extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel33)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtNCrediosADatosA, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtNCreditosADatosA, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(144, 144, 144))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                                 .addGap(24, 24, 24)
@@ -875,7 +881,7 @@ public class Presentacion extends javax.swing.JFrame {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(jLabel29)
@@ -883,9 +889,9 @@ public class Presentacion extends javax.swing.JFrame {
                 .addComponent(txtCodADatosA, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(jLabel30)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(txtPeriodoAcademicoDatosA, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnBuscarDatosA)
                 .addGap(49, 49, 49))
         );
@@ -897,8 +903,8 @@ public class Presentacion extends javax.swing.JFrame {
                     .addComponent(jLabel29)
                     .addComponent(jLabel30)
                     .addComponent(txtCodADatosA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarDatosA))
+                    .addComponent(btnBuscarDatosA)
+                    .addComponent(txtPeriodoAcademicoDatosA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel31)
@@ -908,7 +914,7 @@ public class Presentacion extends javax.swing.JFrame {
                     .addComponent(jLabel32)
                     .addComponent(txtCicloADatosA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel33)
-                    .addComponent(txtNCrediosADatosA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNCreditosADatosA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
@@ -922,11 +928,14 @@ public class Presentacion extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 716, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 716, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -940,6 +949,10 @@ public class Presentacion extends javax.swing.JFrame {
         if(ValidadorAsignatura.validarAsignatura(codigo, nombre)){
             resgistrarAsignatura(codigo,nombre);
         }
+        txtCodigoA.setText("");
+        txtNombreA.setText("");
+        cboCiclo.setSelectedIndex(0);
+        cboCreditos.setSelectedIndex(0);
     }//GEN-LAST:event_btnRegistrarAActionPerformed
 
     private void btnRegistrarEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEActionPerformed
@@ -948,9 +961,14 @@ public class Presentacion extends javax.swing.JFrame {
         String dni = txtDni.getText();
         String codigo = txtCodigoE.getText();
         String direccion  = txtDireccion.getText();
-        if(ValidadorEstudiante.validarEstudiante(codigo,dni,apellidos,nombre,direccion))
-                {registrarEstudiante(nombre,apellidos,dni,codigo,direccion);}
-        
+        if(ValidadorEstudiante.validarEstudiante(codigo,dni,apellidos,nombre,direccion)){
+            registrarEstudiante(nombre,apellidos,dni,codigo,direccion);
+        }
+        txtNombreE.setText("");
+        txtApellidosE.setText("");
+        txtDni.setText("");
+        txtCodigoE.setText("");
+        txtDireccion.setText("");
     }//GEN-LAST:event_btnRegistrarEActionPerformed
 
     private void btnRAsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRAsignaturaActionPerformed
@@ -978,7 +996,8 @@ public class Presentacion extends javax.swing.JFrame {
         String codigoE = txtCodigoEM.getText();
         registrarMatricula();
         jTabbedPane1.setSelectedIndex(0);
-        tblCursosM.removeAll();
+        resetModel(tblCursosM,new String[]{"Codigo","Nombre","Ciclo","Creditos"},
+                new int[]{88,350,60,60},new boolean[]{false,false,false,false});
     }//GEN-LAST:event_btnRegistrarMActionPerformed
 
     private void BtnAddCursoMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAddCursoMActionPerformed
@@ -1053,6 +1072,8 @@ public class Presentacion extends javax.swing.JFrame {
 
     private void btnBuscarDatosEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarDatosEActionPerformed
         tblDatosE.removeAll();
+        resetModel(tblDatosE,new String[]{"Cod. Matricula","Periodo","Asignatura","Nota"},
+                new int[]{88,110,330,65},new boolean[]{false,false,false,false});
         String codE = txtCodEDatoE.getText();
         ArrayList<Asignatura> tempAsignaturas = new ArrayList<Asignatura>();
         Estudiante estudiante = new Estudiante();
@@ -1094,7 +1115,34 @@ public class Presentacion extends javax.swing.JFrame {
 
     private void btnRegresarDatosAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarDatosAActionPerformed
         jTabbedPane1.setSelectedIndex(0);
+        resetModel(tblDatosA,new String[]{"Cod. Estudiante","Apellidos","Nombre","Direccion"},
+                new int[]{108,370,90,230},new boolean[]{false,false,false,false});
     }//GEN-LAST:event_btnRegresarDatosAActionPerformed
+
+    private void btnBuscarDatosAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarDatosAActionPerformed
+        ArrayList<Asignatura> tempAsignaturas = new ArrayList<Asignatura>();
+        String codigoPA = txtPeriodoAcademicoDatosA.getText();
+        String codigoA = txtCodADatosA.getText();
+        tblDatosA.removeAll();
+        for(int i = matriculas.size()-1;i>=0;i--){
+            Matricula tempM = matriculas.get(i);
+            if(tempM.getPeriodo().genCode().equals(codigoPA)){
+                int indexCurso = tempM.tieneCurso(codigoPA);
+                if(indexCurso!=-1){
+                    Asignatura tempA = tempM.getCursosMatriculados().get(indexCurso);
+                    Estudiante tempE = tempM.getEstudiante();
+                    txtNombreADatosA.setText(tempA.getNombre());
+                    txtCicloADatosA.setText(Integer.toString(tempA.getCiclo()));
+                    txtNCreditosADatosA.setText(Integer.toString(tempA.getNumeroCreditos()));
+                    String codE = tempE.getCodigo();
+                    String apellidos = tempE.getApellidos();
+                    String nombre = tempE.getNombre();
+                    String direccion = tempE.getDireccion();
+                    ((DefaultTableModel)tblDatosA.getModel()).addRow(new Object[]{codE,apellidos,nombre,direccion});
+                }
+            }
+        }
+    }//GEN-LAST:event_btnBuscarDatosAActionPerformed
     
     public void resgistrarAsignatura(String codigo, String nombreA) {
         int ciclo = cboCiclo.getSelectedIndex()+1;
@@ -1190,6 +1238,23 @@ public class Presentacion extends javax.swing.JFrame {
             model.addRow(data);
         }
     }
+    
+    public void resetModel(JTable tabla, String[] columnas, int[] anchos, boolean[] editables){
+        DefaultTableModel model = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return editables[column];
+            }
+        };
+        for(int i = 0;i<columnas.length;i++){
+            model.addColumn(columnas[i]);
+        }
+        tabla.setModel(model);
+        for(int i = 0;i<tabla.getColumnCount();i++){
+            tabla.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
+        }
+        
+    }
     /**
      * @param args the command line arguments
      */
@@ -1248,7 +1313,6 @@ public class Presentacion extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1321,12 +1385,13 @@ public class Presentacion extends javax.swing.JFrame {
     private javax.swing.JTextField txtDni;
     private javax.swing.JTextField txtDniEDatosE;
     private javax.swing.JTextField txtDniEM;
-    private javax.swing.JTextField txtNCrediosADatosA;
+    private javax.swing.JTextField txtNCreditosADatosA;
     private javax.swing.JTextField txtNombreA;
     private javax.swing.JTextField txtNombreADatosA;
     private javax.swing.JTextField txtNombreE;
     private javax.swing.JTextField txtNombreEDatosE;
     private javax.swing.JTextField txtNombreEM;
     private javax.swing.JTextField txtNombreENotas;
+    private javax.swing.JTextField txtPeriodoAcademicoDatosA;
     // End of variables declaration//GEN-END:variables
 }
