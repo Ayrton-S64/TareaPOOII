@@ -78,6 +78,7 @@ public class DatoEstudiante {
     }
 
     public static int indexOf(String cod){
+        System.out.println("DatoEstudiante.indexOF : "+cod);
         int index = -1;
         ArrayList<Estudiante> listE = DatoEstudiante.getContenido();
         Estudiante tempE = new Estudiante();

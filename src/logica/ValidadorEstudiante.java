@@ -47,7 +47,7 @@ public class ValidadorEstudiante {
     }
     
     public static boolean checkDni(String dni){
-        if(dni.length()!=7){return false;}
+        if(dni.length()!=8){return false;}
         else{
             for(int i = 0; i<7;i++){
                 if(!Character.isDigit(dni.charAt(i))){

@@ -118,6 +118,12 @@ public class DatoMatricula {
         estudiante = DatoEstudiante.getEstudiante(DatoEstudiante.indexOf(codE));
         asignaturas = DetalleMatriculas.getCursos(codM);
         calificaciones = DetalleMatriculas.getNotas(codM);
+        System.out.println("getMatricula: "+codM);
+        System.out.println("asignaturas.size():"+asignaturas.size());
+        System.out.println("calificaciones.size():"+calificaciones.size());
+        /*for(int i=0;i<calificaciones.size();i+){
+            System.out.println(asignaturas.get(i).getNombre()+"->"+calificaciones.get(i));
+        }*/
         return new Matricula(f,pa,estudiante,asignaturas,calificaciones);
     }
     

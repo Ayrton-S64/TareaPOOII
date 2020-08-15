@@ -15,7 +15,11 @@ import java.util.*;
 public class ValidadorMatricula {
         public static boolean checkEstudiante(String codigo){
         ArrayList<Matricula> matriculas = DatoMatricula.getContenido();
-        if(codigo.length()!=10){return false;}
+        if(codigo.length()!=10){
+            String mensaje = "codigo incorrecto";
+            JOptionPane.showMessageDialog(null, mensaje);
+            System.out.println(mensaje);
+            return false;}
         else{
             for(int i =0; i<10;i++){
                 if(!Character.isDigit(codigo.charAt(i))){
@@ -31,7 +35,7 @@ public class ValidadorMatricula {
             System.out.println(mensaje);
             return false;
         }
-        
+            System.out.println("Check Estudiante retornando True");
         return true;
     }
         //TODO: 
@@ -42,6 +46,10 @@ public class ValidadorMatricula {
         public static boolean validarMatricula(String codigoEstudiante,ArrayList<Asignatura> cursos){
             if(checkEstudiante(codigoEstudiante) && checkCursos(codigoEstudiante, cursos)){
                 return true;
+            }else{
+                String mensaje = "Error...";
+                JOptionPane.showMessageDialog(null, mensaje);
+                System.out.println(mensaje);
             }
             return false;
         }
@@ -50,6 +58,9 @@ public class ValidadorMatricula {
             int nCursos = cursos.size();
             ArrayList<Matricula> matriculas = DatoMatricula.getContenido();
             if(nCursos == 0 || nCursos > 6){
+                String mensaje = "Ingrese una cantidad de cursos valida";
+            JOptionPane.showMessageDialog(null, mensaje);
+            System.out.println(mensaje);
                 return false;
             }
             boolean encontrado = false;
@@ -75,7 +86,13 @@ public class ValidadorMatricula {
                         }
                     }
                 }while(cursos.size()>0 && i!=0);
+            }else{
+                String mensaje = "Pero que esta pasando";
+                JOptionPane.showMessageDialog(null, mensaje);
+                System.out.println(mensaje);
+                return false;
             }
+            System.out.println("check cursos retornando true;");
             return true;
         }    
 }

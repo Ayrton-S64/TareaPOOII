@@ -52,20 +52,25 @@ public class DetalleMatriculas {
     
     public static boolean modifyNota(String codMatricula, String codAsignatura,float nota){
         System.out.println("modifyNota]]]]");
+        System.out.println(codMatricula+"|"+codAsignatura+"|"+nota);
         boolean validacion = true;
         try{
             crearArchivo();
             for(int i = numRegistros-1;i>=0;i--){
+                System.out.println("i:"+i+"->"+numRegistros);
                 flujo.seek(i*TAMREG);
                 String tempCodM = flujo.readUTF();
+                System.out.print("Datos:> "+tempCodM+"|");
                 if(tempCodM.equals(codMatricula)){
                     String tempCodA = flujo.readUTF();
+                    System.out.print(tempCodA+"|");
                     if(tempCodA.equals(codAsignatura)){
                         flujo.readInt();
                         System.out.println("Escribiendo: " + nota);
                         flujo.writeFloat(nota);
-                    }
-                }
+                        System.out.print(nota+"\n");
+                    }System.out.println("");
+                }else{System.out.println("");}
             }
 
         }catch(IOException ex){
@@ -90,22 +95,25 @@ public class DetalleMatriculas {
             //if (matricula.getSize() + 4 > TAMREG) {
                 
             //} else {
-                crearArchivo();
                 ArrayList<Asignatura> lista = matricula.getCursosMatriculados();
                 for(int i =0 ; i < lista.size();i++){
+                    crearArchivo();
                     System.out.println("Escribribiendo asignatura: "+lista.get(i).getNombre());
                     flujo.seek(pos * TAMREG);
                     flujo.writeUTF(matricula.genCode());
+                    System.out.println("Codigo Escrito");
                     flujo.writeUTF(lista.get(i).getCodigo());
+                    System.out.println("Codigo Asignatura Escrito");
                     flujo.writeInt(DetalleMatriculas.countAsignatura(matricula.genCode(), lista.get(i).getCodigo()));
                     //System.out.println(matricula.getCalificaciones().get(i));
-                    flujo.writeFloat(matricula.getCalificaciones().get(i));
+                    flujo.writeFloat(0.0f);
                     pos++;
                     n++;
                 //  }
                 }
         } catch (IOException ex) {
             System.out.println("Excepción: " + ex.getMessage());
+            System.out.println("Causa: "+ex.getCause());
             n=0;
         } finally {
             try {
@@ -133,12 +141,6 @@ public class DetalleMatriculas {
             }
         } catch (IOException ex) {
             System.out.println("ERROR: "+ex);
-        } finally {
-            try{
-                flujo.close();
-            }catch(IOException ex){
-                System.out.println("El archivo ya se encuentra cerrado: "+ex);
-            }
         }
         return c;
     }
@@ -201,7 +203,7 @@ public class DetalleMatriculas {
     public static ArrayList<Float> getNotas(String codM){
         System.out.println("GetNotas");
         ArrayList<Float> list = new ArrayList<Float>();
-        String codigoM;
+        String codigoM = "";
         String codigoA;
         Float nota = 0.0f;
         try {
@@ -213,19 +215,23 @@ public class DetalleMatriculas {
                     flujo.seek(i * TAMREG);
                     codigoM = flujo.readUTF();
                     System.out.println("CodigoM: "+codigoM);
+                    System.out.println("Comparando "+codM +" vs "+codigoM);
                     if(codigoM.equals(codM)){
+                        System.out.println("TRUE");
                         System.out.println(flujo.readUTF());
                         System.out.println(flujo.readInt());
                         nota = flujo.readFloat();
                         nota = (nota == null)?0.0f:nota;
                         System.out.println("nota:"+ nota);
                         
-                    }
+                    }else{System.out.println("FALSE");}
                 }catch(IOException ex){
                     System.out.println("[DetalleMatriculas]Problema de E/S: " + ex.getMessage());
                     System.out.println("Nota = "+nota+ "|" + ex.getCause());
                 }
-                list.add(nota);
+                if(codigoM.equals(codM)){
+                    list.add(nota);
+                }
             }
         } finally {
             try {
